@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="bd-example" align="middle">
+
+</div>
+
+    <div style="min-height:100%">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-dark" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                <div class="alert alert-info" role = "alert">
+                    {{ message }}
+                </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+
+
+{% endblock %}
+    <!--
+    <form action="/process" method="POST">
+      <label for="field1">Возраст от:</label>
+      <input type="text" name="field1" id="field1"><br>
+      <label for="field2">Возраст до:</label>
+      <input type="text" name="field2" id="field2"><br>
+      <label for="field3">Дата от:</label>
+      <input type="text" name="field3" id="field3"><br>
+      <label for="field4">Дата до:</label>
+      <input type="text" name="field4" id="field4"><br>
+      <label for="field5">Константа:</label>
+      <input type="text" name="field5" id="field5"><br>
+
+      <input type="submit" name="button1" value="Button 1">
+      <input type="submit" name="button2" value="Button 2">
+      <input type="submit" name="button3" value="Button 3">
+    </form>
+    -->

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+    <form action="/" class="navbar-form nav-item" method="POST">
+    <!-- скрытый параметр -->
+        <h4>Выбрать возраст:</h4>
+        <input type="text" name="age_from" value="0">
+        <input type="text" name="age_to" value="180">
+        <hr>
+        <h4>Плановое задание, бюджет:</h4>
+        <input type="text" name="constant" value="474">
+        <hr>
+        <h4>Выбрать дату:</h4>
+        <input type="text" name="date_from" class="form-control dp1" />
+        <input type="text" name="date_to" class="form-control dp2" />
+        <hr>
+        <div class="form-horizontal">
+            <div>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-warning" role = "alert">
+                        {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+            </div>
+            <div class="text-center">
+                <input type="submit" name="submit" class="btn btn-dark" value="Сформировать еженедельный отчёт">
+                <input type="submit" name="submit" class="btn btn-dark" value="Ежемесячный">
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}
+

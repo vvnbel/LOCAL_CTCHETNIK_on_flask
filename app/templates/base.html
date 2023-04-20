@@ -1,0 +1,33 @@
+{% extends 'bootstrap/base.html' %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/npm.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+{% block navbar %}
+    <nav class="navbar navbar-default">
+      <a class="navbar-brand" href="#">
+        <img src="{{url_for('static', filename='2.png')}}" width="36" height="24" class="d-inline-block align-top" alt="">
+      </a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li {% if request.path =='/weekly-report' %}class="active"{% endif %}><a href="/weekly-report">Сформировать отчёт</a></li>
+                    <li {% if request.path !='/monthly-report' %}class="disabled"{% endif %}><a href="/complications">Осложнения</a></li>
+                    <li {% if request.path !='/monthly-report' %}class="disabled"{% endif %}><a href="/inner-page"></a></li>
+                </ul>
+            </div>
+    </nav>
+{% endblock %}
+<body>
+
+    {% block flash_m %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block scripts %}
+        {{ super() }}
+
+        {{ datepicker.loader(theme="dot-luv") }} {# to load jQuery-ui #}
+        {{ datepicker.picker(id=".dp1") }}
+        {{ datepicker.picker(id=".dp2") }}
+    {% endblock %}
+</body>
+
